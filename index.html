@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Match</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./Assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1 class="title is-1"><strong>Meal Match</strong></h1>
+            <div class="nav-center">
+                <a href="">Most Loved</a>
+            </div>
+        </nav>
+    </header>
+    <!--
+    <section class="hero is-large">
+        <div class="hero-body">
+            <img src="./Assets/images/dinner.jpg" alt="">
+        </div>
+      </section>-->
+      <section id="card-section" class="section">
+        <div id="card-container" class="container">
+            <h3 id="card-container-hdg" class="title is-size-3">Choose your meal</h3>
+            <div class="columns mt-5 is-10">
+                <div class="column is-6">
+                    <div id="recipe-card" class="card">
+                        <div id="recipe-img" class="card-image has-text-centered px-1">
+                            <img src="./Assets/images/meal.png" alt="just a test imgage">
+                        </div>
+                        <header class="card-header">
+                            <input id="recipeQuery" type="text"placeholder="Food?">
+                            <button id="searchRecipeBtn" class="button is-focused" >Submit</button>
+                        </header>
+                        <div class="card-content">
+                            <div id="recipecontent" class="content">
+                                <ul id="recipeList">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button id="matchBtn" class="button is-success is-light">
+                        <!-- <a href="./results.html" class="card-footer-item">Match</a> -->
+                        Match
+                    </button>
+                </div>
+             
+                <div class="column">    
+                    <div id="drink-card" class="card">
+                        <div id="drink-img" class="card-image has-text-centered px-1">
+                            <img src="./Assets/images/cocktail.jpg" alt="just a test image">
+
+                        </div>
+                        <header class="card-header">
+                            <input id="drinkQuery" type="text" placeholder="Cocktail?">
+                            <button id="searchDrinkBtn" class="button is-focused">Submit</button>
+                            <button id="randomDrinkBtn" class="button is-warning is-light mx-1">Random!</button>
+                        </header>
+                        <div class="card-content">
+                            <div id="drink-content" class="content">
+                                <!--once you pull the list you can delete the li and input the data-->
+                                <ul class="control" id="drinkList">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!--modal-->
+    <div  id="recipeModal" class="modal">
+        <div id="recipeModalBkg" class="modal-background"></div>
+        <div class="modal-content has-background-white py-1 px-1">
+            <!-- >>>>>>>>>>>>>>>>>>>> card begin <<<<<<<<<<<<<<<<<<<<<<-->
+            <section id="card-section" class="section">
+                <div id="card-container" class="container">
+                  <h3 id="card-container-hdg" class="title has-text-centered is-size-3">Your Meal is Matched</h3>
+                  <div class="columns mt-5 is-10">
+                    <!--<<<<<<<<<<<<<<< card 2 of results page Begin >>>>>>>>>>>-->
+                    <div class="column">
+                      <div id="recipe-card" class="card">
+                        <header class="card-header">
+                          <p id="recipeName" class="card-header-title">Recipe Name</p>
+                        </header>
+                        <div id="recipe-img" class="card-image has-text-centered px-1">
+                          <img
+                            id="recipeImage"
+                            src="./Assets/images/dinner.jpg"
+                            alt="just a test imgage"
+                          />
+                        </div>
+        
+                        <div class="card-content">
+                          <div id="recipeContent" class="content">
+                            <p class="title is-5">Ingredients</p>
+                            <ul id="recipeIngredients"></ul>
+                            <p class="title is-5">Instructions</p>
+                            <p id="recipeInstructions"></p>
+                          </div>
+                        </div>
+                        <footer>
+                            <!--add ID in order to allow it to be chosen-->
+                            <a href="#" class="card-footer-item is-success">Pick me</a>
+                        </footer>
+                        <!-- <footer class="card-footer">
+                                        <a href="#" class="card-footer-item">Save</a>
+                                    </footer> -->
+                      </div>
+                    </div>
+                </div>
+            </section>
+            <!-- >>>>>>>>>>>>>>>>>>>> card  end  <<<<<<<<<<<<<<<<<<<<<<-->
+        </div>       
+    </div>
+    <!--this is a modal for the drinks-->
+    <div  id="drinkModal" class="modal">
+        <!--changed recipe IDs to drink IDs-->
+        <div id="drinkModalBkg" class="modal-background"></div>
+        <div class="modal-content has-background-white py-1 px-1">
+            <section id="card-section" class="section">
+                <div id="card-container" class="container">
+                  <h3 id="card-container-hdg" class="title has-text-centered is-size-3">Your Meal is Matched</h3>
+                  <div class="columns mt-5 is-10">
+                    <div class="column">
+                      <div id="drink-card" class="card">
+                        <header class="card-header">
+                          <p id="drinkName" class="card-header-title">Cocktail Name</p>
+                        </header>
+                        <div id="drink-img" class="card-image has-text-centered px-1">
+                          <img
+                            id="drinkImage"
+                            src="./Assets/images/cocktail.jpg"
+                            alt="just a test imgage"
+                          />
+                        </div>
+        
+                        <div class="card-content">
+                          <div id="drinkContent" class="content">
+                            <p class="title is-5">Ingredients</p>
+                            <ul id="drinkIngredients"></ul>
+                            <p class="title is-5">Instructions</p>
+                            <p id="drinkInstructions"></p>
+                          </div>
+                        </div>
+                        <footer>
+                            <!--add ID in order to allow it to be chosen-->
+                            <a href="#" class="card-footer-item is-success">Pick me</a>
+                        </footer>
+                        <!-- <footer class="card-footer">
+                                        <a href="#" class="card-footer-item">Save</a>
+                                    </footer> -->
+                      </div>
+                    </div>
+                </div>
+            </section>
+            <!-- >>>>>>>>>>>>>>>>>>>> card  end  <<<<<<<<<<<<<<<<<<<<<<-->
+        </div>
+        
+    </div>
+    <!--<div class="box">
+        <div class="column is-centered">
+            <div id="recipe-card" class="card">
+                <header id="recipe-img" class="card-image has-text-centered px-1">
+                    <img src="./Assets/images/dinner.jpg" alt="just a test imgage">
+                    <p>Example1</p>
+                </header>
+                <div class="card-content">
+                    <div id="recipe-content" class="content is-centered">Example1</div>
+                </div>
+                <footer class="card-footer">
+                    <a href="./results.html" class="card-footer-item">Show me my match!</a>
+                </footer>
+            </div>
+        </div>
+    </div>-->
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./Assets/js/script.js"></script>
+</body>
+
+</html>
